@@ -4,7 +4,6 @@ metadata:
   name: registry
 data:
   registry-server.yaml: |
-    # server config
     port: 8080
     database:
       driver: postgres

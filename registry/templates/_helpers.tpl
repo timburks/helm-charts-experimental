@@ -50,13 +50,3 @@ app.kubernetes.io/name: {{ include "registry.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
-{{/*
-Create the name of the service account to use
-*/}}
-{{- define "registry.serviceAccountName" -}}
-{{- if .Values.serviceAccount.create }}
-{{- default (include "registry.fullname" .) .Values.serviceAccount.name }}
-{{- else }}
-{{- default "default" .Values.serviceAccount.name }}
-{{- end }}
-{{- end }}
