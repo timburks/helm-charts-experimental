@@ -1,3 +1,4 @@
+```
 $ microk8s helm3 install data bitnami/postgresql --namespace registry
 NAME: data
 LAST DEPLOYED: Mon Apr  3 21:03:16 2023
@@ -33,4 +34,4 @@ To connect to your database from outside the cluster execute the following comma
     PGPASSWORD="$POSTGRES_PASSWORD" psql --host 127.0.0.1 -U postgres -d postgres -p 5432
 
 WARNING: The configured password will be ignored on new installation in case when previous Posgresql release was deleted through the helm command. In that case, old PVC will have an old password, and setting it through helm won't take effect. Deleting persistent volumes (PVs) will solve the issue.
-
+```
