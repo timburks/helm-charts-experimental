@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: registry
+data:
+  registry-server.yaml: |
+    port: 8080
+    database:
+      driver: postgres
+      config: host=data-postgresql.registry.svc.cluster.local port=5432 user=postgres dbname=postgres password=$PGPASSWD sslmode=disable
+    logging:
+      level: info
+    pubsub:
+      enable: false
+      project: ""
