@@ -63,6 +63,7 @@ An instance of the `registry` tool configured to run as a [controller](https://g
 
 - https://helm.sh/docs/howto/chart_repository_sync_example/
 - https://opensource.com/article/20/5/helm-charts
+- https://docs.vmware.com/en/VMware-Application-Catalog/services/tutorials/GUID-create-first-helm-chart-index.html
 
 ## License and Copyright
 

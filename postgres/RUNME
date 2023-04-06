@@ -1,6 +1,0 @@
-#this sets up the database
-
-create database registry;
-create user registry with password 'iloveapis';
-grant all privileges on database registry to registry;
-
