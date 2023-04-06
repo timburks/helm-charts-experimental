@@ -30,14 +30,13 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-              image: gcr.io/google-samples/node-hello:1.0
           env:
             - name: PORT
               value: "8080"
             - name: REGISTRY_SERVER_HOST
               value: registry-server.registry.svc.cluster.local
             - name: REGISTRY_SERVER_PORT
-              value: 80     
+              value: "80"     
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
