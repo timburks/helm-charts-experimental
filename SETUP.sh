@@ -5,16 +5,13 @@
 # YMMV.
 
 # Install the TLS certificate for the registry service hosts.
+# Note that this is not included in the repo! You need to make this.
+# It should contain a secret of type "tls" that contains credentials
+# for an SSL cert for the two domain names that we use below for
+# REGISTRY_HOST (the API server) and VIEWER_HOST (the viewer).
 kubectl apply -f secret.yaml --namespace registry
 
-# Install postgres with the bitnami chart.
-microk8s helm3 install --namespace registry data bitnami/postgresql
-
-# Install the registry-server.
-microk8s helm3 install --namespace registry registry-server registry-server
-
-# Install registry-gateway-noauth.
-microk8s helm3 install --namespace registry registry-gateway-noauth registry-gateway-noauth --set ingress.host=${REGISTRY_HOST}
-
-# Install registry-viewer.
-microk8s helm3 install --namespace registry registry-viewer registry-viewer --set ingress.host=${VIEWER_HOST} --set registry.host=${REGISTRY_HOST}
+helm install -n registry data bitnami/postgresql
+helm install -n registry registry-server registry-server
+helm install -n registry registry-gateway-noauth registry-gateway-noauth --set ingress.host=${REGISTRY_HOST}
+helm install -n registry registry-viewer registry-viewer --set ingress.host=${VIEWER_HOST} --set registry.host=${REGISTRY_HOST}

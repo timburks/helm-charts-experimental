@@ -4,11 +4,11 @@
 # Everything is installing to a "registry" namespace.
 # YMMV.
 
-microk8s helm3 uninstall --namespace registry registry-viewer
-microk8s helm3 uninstall --namespace registry registry-gateway-noauth
-microk8s helm3 uninstall --namespace registry registry-server
-microk8s helm3 uninstall --namespace registry data
+helm uninstall -n registry registry-viewer
+helm uninstall -n registry registry-gateway-noauth
+helm uninstall -n registry registry-server
+helm uninstall -n registry data
 
-kubectl delete secrets/registry-tls --namespace registry
+kubectl delete secrets/registry-tls -n registry
 kubectl delete pvc/data-data-postgresql-0 -n registry
 
