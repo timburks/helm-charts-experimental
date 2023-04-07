@@ -14,6 +14,9 @@ imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
 
+ingress:
+  host: registry.local
+
 podAnnotations: {}
 
 service:
