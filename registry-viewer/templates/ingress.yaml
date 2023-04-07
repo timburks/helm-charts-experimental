@@ -1,15 +1,12 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: registry
-  annotations:
-    nginx.ingress.kubernetes.io/backend-protocol: "GRPC"
-    nginx.ingress.kubernetes.io/proxy-body-size: 8m
+  name: viewer
 spec:
   tls:
   - hosts:
       - {{ .Values.ingress.host }}
-    secretName: registry-tls
+    secretName: grpc-tls
   rules:
   - host: {{ .Values.ingress.host }}
     http:
