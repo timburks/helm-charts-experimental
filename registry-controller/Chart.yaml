@@ -1,0 +1,11 @@
+apiVersion: v2
+name: registry-controller
+description: The Apigee Registry API controller.
+
+type: application
+
+# The chart version.
+version: 0.1.1
+
+# The version number of the application being deployed.
+appVersion: "v0.6.10"

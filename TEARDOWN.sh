@@ -4,6 +4,7 @@
 # Everything is installing to a "registry" namespace.
 # YMMV.
 
+helm uninstall -n registry registry-controller
 helm uninstall -n registry registry-viewer
 helm uninstall -n registry registry-gateway-noauth
 helm uninstall -n registry registry-server

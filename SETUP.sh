@@ -15,3 +15,4 @@ helm install -n registry data bitnami/postgresql
 helm install -n registry registry-server registry-server
 helm install -n registry registry-gateway-noauth registry-gateway-noauth --set ingress.host=${REGISTRY_HOST}
 helm install -n registry registry-viewer registry-viewer --set ingress.host=${VIEWER_HOST} --set registry.host=${REGISTRY_HOST}
+helm install -n registry registry-controller registry-controller

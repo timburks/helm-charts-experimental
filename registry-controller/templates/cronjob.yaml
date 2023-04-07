@@ -1,0 +1,27 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: controller
+spec:
+  schedule: "*/2 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: {{ .Chart.Name }}
+            image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+            imagePullPolicy: {{ .Values.image.pullPolicy }}
+            env:
+            - name: REGISTRY_ADDRESS
+              value: {{ .Values.registry.host }}:{{ .Values.registry.port }}
+            - name: REGISTRY_INSECURE
+              value: "true"
+            command:
+            - registry
+            - rpc
+            - admin
+            - get-status
+            - --json
+          restartPolicy: OnFailure
+
