@@ -19,9 +19,7 @@ spec:
               value: "true"
             command:
             - registry
-            - rpc
-            - admin
-            - get-status
-            - --json
+            - resolve
+            - projects/catalog/locations/global/artifacts/manifest
           restartPolicy: OnFailure
 
