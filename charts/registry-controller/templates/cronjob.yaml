@@ -20,6 +20,6 @@ spec:
             command:
             - registry
             - resolve
-            - projects/catalog/locations/global/artifacts/manifest
+            - projects/{{ .Values.registry.project }}/locations/global/artifacts/manifest
           restartPolicy: OnFailure
 

@@ -34,7 +34,7 @@ spec:
             {{- toYaml .Values.resources | nindent 12 }}
           env:
           - name: REGISTRY_SERVICE
-            value: https://{{ .Values.registry.host }}
+            value: {{ .Values.registry.url }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

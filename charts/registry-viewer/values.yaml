@@ -5,7 +5,7 @@
 replicaCount: 1
 
 image:
-  repository: ghcr.io/apigee/registry-tools
+  repository: ghcr.io/apigee/registry-viewer
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: main
@@ -14,11 +14,18 @@ imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
 
+ingress:
+  host: viewer.local
+
 registry:
-  host: registry-server.registry.svc.cluster.local
-  port: 80
+  url: http://registry.local
+
 
 podAnnotations: {}
+
+service:
+  type: ClusterIP
+  port: 80
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
