@@ -5,47 +5,53 @@ This repo contains Helm charts for the
 
 ## Charts
 
-The `charts` directory contains Helm charts for the parts of an API Registry.
+The [charts](/charts) directory contains Helm charts for the parts of an API
+Registry.
 
-### registry-server
+- [registry-server](/charts/registry-server) installs the Registry API gRPC
+  service.
 
-The Registry API gRPC service.
+- [registry-gateway](/charts/registry-gateway) installs an Envoy proxy
+  configured to provide grpc-web and grpc-transcoding support.
 
-### registry-gateway
+- [registry-viewer](/charts/registry-viewer) installs the
+  [Registry Viewer](https://github.com/apigee/registry-viewer).
 
-An Envoy proxy configured to provide grpc-web and grpc-transcoding support.
+- [registry-controller](/charts/registry-controller) installs an instance of
+  the `registry` tool configured to run as a
+  [controller](https://github.com/apigee/registry/wiki/registry-resolve) with
+  built-in support for running a small set of default linters and similar
+  tools.
 
-### registry-viewer
+## Installation
 
-The [Registry Viewer](https://github.com/apigee/registry-viewer).
+Users familiar with Helm can install these charts directly and we also include
+scripts supporting common environments.
 
-### registry-controller
+### [minikube](/minikube)
 
-An instance of the `registry` tool configured to run as a
-[controller](https://github.com/apigee/registry/wiki/registry-resolve) with
-built-in support for running a small set of default linters and similar tools.
+This directory contains scripts for installing these charts in
+[minikube](https://minikube.sigs.k8s.io/docs/). It starts a local installation
+suitable for exploration.
 
-## Usage
-
-### The `minikube` directory contains scripts for installing these charts in minikube.
-
-This starts a local installation suitable for exploration.
-
-- `minikube/SETUP.sh` will start minikube and install the charts.
+- `minikube/SETUP.sh` will start minikube and install the charts. It should be
+  run from the directory containing this README.
 - `minikube/TEARDOWN.sh` will delete everything and stop minikube.
 - `minikube/dash.sh` will open the Kubernetes dashboard in a local browser.
 - `minikube/viewer.sh` will open the Registry Viewer in a local browser.
 - `minikube/registry-config.sh` will configure the `registry` tool to work with
   the minikube installation.
 
-### The `microk8s` directory contains scripts for installing these charts in microk8s.
+### [microk8s](/microk8s)
 
-This sets up a registry for more persistent usage. They have been used with
-[microk8s](https://microk8s.io/), which we use to run the API Registry in a
-local "bare-metal" cluster.
+This directory contains scripts for installing the charts in
+[microk8s](https://microk8s.io/). This sets up a registry for more persistent
+usage. We have used them to run the API Registry in a local "bare-metal"
+cluster.
 
-- `minikube/SETUP.sh` will start minikube and install the charts.
-- `minikube/TEARDOWN.sh` will delete everything and stop minikube.
+- `microk8s/SETUP.sh` will start minikube and install the charts. It should be
+  run from the directory containing this README.
+- `microk8s/TEARDOWN.sh` will delete everything and stop minikube.
 
 Connections to the API and viewer use SSL, so two hostnames are required along
 with an SSL certificate that can be used for both. These should be set as
@@ -126,4 +132,4 @@ installation of the
 
 Contents are copyrighted and licensed identically to the contents of
 [apigee/registry-experimental](https://github.com/apigee/registry-experimentally).
-This repo may eventually be merged into `registry-experimental`.
+This repo is intended to be merged into `registry-experimental`.
