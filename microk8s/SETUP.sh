@@ -12,7 +12,7 @@
 kubectl apply -f secret.yaml --namespace registry
 
 helm install -n registry data bitnami/postgresql
-helm install -n registry registry-server registry-server
-helm install -n registry registry-gateway-noauth registry-gateway-noauth --set ingress.host=${REGISTRY_HOST}
-helm install -n registry registry-viewer registry-viewer --set ingress.host=${VIEWER_HOST} --set registry.host=${REGISTRY_HOST}
-helm install -n registry registry-controller registry-controller
+helm install -n registry registry-server charts/registry-server
+helm install -n registry registry-gateway charts/registry-gateway --set ingress.host=${REGISTRY_HOST}
+helm install -n registry registry-viewer charts/registry-viewer --set ingress.host=${VIEWER_HOST} --set registry.url=https://${REGISTRY_HOST}
+helm install -n registry registry-controller charts/registry-controller --set registry.project=menagerie

@@ -9,9 +9,9 @@ minikube start
 helm install -n registry data bitnami/postgresql
 
 helm install -n registry registry-server charts/registry-server
-helm install -n registry registry-gateway-noauth charts/registry-gateway-noauth --set service.type=NodePort
+helm install -n registry registry-gateway charts/registry-gateway --set service.type=NodePort
 
-export REGISTRY_URL=`minikube service registry-gateway-noauth --url -n registry`
+export REGISTRY_URL=`minikube service registry-gateway --url -n registry`
 
 echo waiting for service deployments
 kubectl wait deployments --all --for condition=available --timeout=180s -n registry

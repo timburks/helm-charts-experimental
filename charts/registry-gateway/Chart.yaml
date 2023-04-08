@@ -1,5 +1,5 @@
 apiVersion: v2
-name: registry-gateway-noauth
+name: registry-gateway
 description: An Envoy Gateway to the Apigee Registry API server.
 
 type: application
