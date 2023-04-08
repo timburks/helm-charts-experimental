@@ -25,8 +25,8 @@ Registry.
 
 ## Installation
 
-Users familiar with Helm can install these charts directly and we also include
-scripts supporting common environments.
+Users familiar with Helm can install these charts directly, but we also include
+directories containing scripts supporting common environments.
 
 ### [minikube](/minikube)
 
@@ -124,7 +124,8 @@ installation of the
 
 Quoting the `bitnami/postgresql` installation notes:
 
-> PostgreSQL can be accessed via port 5432 on the following DNS names from within your cluster:
+> PostgreSQL can be accessed via port 5432 on the following DNS names from
+> within your cluster:
 
     data-postgresql.registry.svc.cluster.local - Read/Write connection
 
@@ -137,14 +138,18 @@ Quoting the `bitnami/postgresql` installation notes:
     kubectl run data-postgresql-client --rm --tty -i --restart='Never' --namespace registry --image docker.io/bitnami/postgresql:15.2.0-debian-11-r14 --env="PGPASSWORD=$POSTGRES_PASSWORD" \
       --command -- psql --host data-postgresql -U postgres -d postgres -p 5432
 
-    > NOTE: If you access the container using bash, make sure that you execute "/opt/bitnami/scripts/postgresql/entrypoint.sh /bin/bash" in order to avoid the error "psql: local user with ID 1001} does not exist"
+> NOTE: If you access the container using bash, make sure that you execute "/opt/bitnami/scripts/postgresql/entrypoint.sh /bin/bash" in order to avoid the error "psql: local user with ID 1001} does not exist"
 
-> To connect to your database from outside the cluster execute the following commands:
+> To connect to your database from outside the cluster execute the following
+> commands:
 
     kubectl port-forward --namespace registry svc/data-postgresql 5432:5432 &
     PGPASSWORD="$POSTGRES_PASSWORD" psql --host 127.0.0.1 -U postgres -d postgres -p 5432
 
-> WARNING: The configured password will be ignored on new installation in case when previous Posgresql release was deleted through the helm command. In that case, old PVC will have an old password, and setting it through helm won't take effect. Deleting persistent volumes (PVs) will solve the issue.
+> WARNING: The configured password will be ignored on new installation in case
+> when previous Posgresql release was deleted through the helm command. In that
+> case, old PVC will have an old password, and setting it through helm won't
+> take effect. Deleting persistent volumes (PVs) will solve the issue.
 
 ## Resources
 
