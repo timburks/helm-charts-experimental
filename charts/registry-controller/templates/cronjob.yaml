@@ -17,9 +17,13 @@ spec:
               value: {{ .Values.registry.host }}:{{ .Values.registry.port }}
             - name: REGISTRY_INSECURE
               value: "true"
+            - name: REGISTRY_PROJECT
+              value: {{ .Values.registry.project }}
+            - name: REGISTRY_LOCATION
+              value: global
             command:
             - registry
             - resolve
-            - projects/{{ .Values.registry.project }}/locations/global/artifacts/manifest
+            - artifacts/manifest
           restartPolicy: OnFailure
 
