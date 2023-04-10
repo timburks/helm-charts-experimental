@@ -34,8 +34,6 @@ spec:
           - name: conf
             mountPath: /registry-server.yaml
             subPath: registry-server.yaml
-          resources:
-            {{- toYaml .Values.resources | nindent 12 }}
           env:
           - name: PGPASSWD
             valueFrom:
